@@ -2,7 +2,6 @@ import { useState } from "react"
 import supabase from "../supabase/supabase";
 
 export default function Signup(){
-    //console.log(import.meta.env.VITE_SUPABASE_URL);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,7 +14,7 @@ export default function Signup(){
             password
         });
 
-
+        // To do: show toast with error message
         if(error){
             console.error(error);
         }
