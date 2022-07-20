@@ -14,7 +14,9 @@ export default function Login(){
             email,
             password
           });
-        
+
+
+        // To do: show toast with error
         if(error) {
             console.error(error);
         }
