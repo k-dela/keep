@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router";
 import supabase from "../supabase/supabase";
 
 export default function Signup(){
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -19,7 +21,9 @@ export default function Signup(){
             console.error(error);
         }
 
-        console.log(user);
+        if(user){
+            navigate('/login');
+        }
     }
 
     return (
