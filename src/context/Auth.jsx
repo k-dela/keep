@@ -4,23 +4,20 @@ import supabase from "../supabase/supabase";
 const AuthContext = createContext();
 
 export function useAuth() {
-    return useContext(AuthContext)
+    return useContext(AuthContext);
 }
   
 export function AuthProvider({children}){
     const [user, setUser] = useState();
-    const [loading, setLoading] = useState();
 
     useEffect(() => {
         const session = supabase.auth.session();
 
         setUser(session?.user ?? null);
-        setLoading(false);
 
         const { data: listener } = supabase.auth.onAuthStateChange(
             async (event, session) => {
               setUser(session?.user ?? null)
-              setLoading(false)
             }
           )
       
@@ -33,7 +30,7 @@ export function AuthProvider({children}){
 
     return (
         <AuthContext.Provider>
-            {!loading && children}
+            {children}
         </AuthContext.Provider>
     )
 }
