@@ -9,6 +9,8 @@ export default function Home(){
         console.log(currentUser)
         setUser(currentUser);
     },[]);
+
+    
     return (
         <div>
             <h1>Home</h1>
