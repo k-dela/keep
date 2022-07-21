@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 
-body{
+/* body{
   background-color: turquoise;
-}
+} */
 
-.noteform-container{
+/* .noteform-container{
   background-color: tomato;
-}
+} */
 
 .notes-container{
   background-color: violet;

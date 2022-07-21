@@ -37,6 +37,9 @@ export default function Home(){
         fetchNotes();
     }, [])
 
+    const handleClick = () => {
+        return console.log('You clicked a note')
+    }
     return (
         <div className="root-container">
             <h1>Home</h1>
@@ -45,7 +48,7 @@ export default function Home(){
 
             <div className="notes-container">
                 {notes && notes.map((note) => {
-                    return <Note key={note.id} note={note} deleteNote={deleteNote} />
+                    return <Note key={note.id} note={note} deleteNote={deleteNote} handleClick={handleClick} />
                 })}
             </div>
         </div>

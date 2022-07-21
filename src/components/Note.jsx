@@ -1,6 +1,6 @@
-export default function Note({ note, deleteNote }){
+export default function Note({ note, deleteNote, handleClick }){
     return (
-        <div className='note'>
+        <div className='note' onClick={() => handleClick()}>
             <h2>{note.title}</h2>
             <p>{note.body}</p>
             <p>{note.id}</p>
