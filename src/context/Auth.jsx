@@ -9,24 +9,28 @@ export function useAuth() {
   
 export function AuthProvider({children}){
     const [user, setUser] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const session = supabase.auth.session();
+        setUser(session?.user || null);
+        setLoading(false);
 
-        setUser(session?.user ?? null);
-
-        const { data: listener } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
-              setUser(session?.user ?? null)
+        const auth = supabase.auth.onAuthStateChange(
+             (event, session) => {
+              if(event === 'SIGNED_IN'){
+                setUser(session.user);
+                setLoading(false);
+              }else if(event === 'SIGNED_OUT'){
+                setUser(null);
+              }
             }
           )
       
-          return () => {
-            listener?.unsubscribe()
-          }
+          return () => auth.data.unsubscribe();
     }, []);
 
-    const value = {user};
+    const value = {user, loading};
 
     return (
         <AuthContext.Provider value={value}>
