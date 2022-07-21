@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/Auth"
+import supabase from "../supabase/supabase";
 
 
 export default function Home(){
@@ -13,7 +14,12 @@ export default function Home(){
         e.preventDefault();
 
         console.log(title, body);
-        const newNote = {title,body};
+        const user_id = user.id;
+        //console.log(author);
+        const {data: newNote, error} = await supabase.from('Note').insert([{title,body,user_id}]);
+
+        if(error) console.error(error);
+        
         const newNotes = [...notes, newNote];
         setNotes(newNotes);
     }
