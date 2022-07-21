@@ -3,28 +3,32 @@ import { useAuth } from "../context/Auth"
 import supabase from "../supabase/supabase";
 
 import Note from "../components/Note";
+import NoteForm from "../components/NoteForm";
 
 
 export default function Home(){
     const {user} = useAuth();
 
     const [notes, setNotes] = useState([]);
-    const [title, setTitle] = useState("");
-    const [body, setBody] = useState("");
 
-    const createNote = async (e) => {
-        e.preventDefault();
-
-        console.log(title, body);
-        const user_id = user.id;
-        //console.log(author);
-        const {data, error} = await supabase.from('Note').insert([{title,body,user_id}]);
-        const newNote = data[0];
-        if(error) console.error(error);
-        
-        const newNotes = [...notes, newNote];
-        setNotes(newNotes);
+    const addNewNote = (newNote) => {
+        const updatedList = [...notes, newNote];
+        setNotes(updatedList);
     }
+
+    // const createNote = async (e) => {
+    //     e.preventDefault();
+
+    //     // console.log(title, body);
+    //     // const user_id = user.id;
+    //     // //console.log(author);
+    //     // const {data, error} = await supabase.from('Note').insert([{title,body,user_id}]);
+    //     // const newNote = data[0];
+    //     // if(error) console.error(error);
+        
+    //     // const newNotes = [...notes, newNote];
+    //     // setNotes(newNotes);
+    // }
 
     const deleteNote = async (noteId) => {
         if(window.confirm('You sure about this?')){
@@ -45,13 +49,14 @@ export default function Home(){
         }
 
         fetchNotes();
-    }, [notes])
+    }, [])
 
     return (
         <div>
             <h1>Home</h1>
-            <p>{JSON.stringify(user)}</p>
 
+            <NoteForm addNewNote={addNewNote} userId={user.id}/>
+{/* 
             <div>
                 <form onSubmit={createNote}>
                     <div>
@@ -72,7 +77,7 @@ export default function Home(){
                         <button>Create</button>
                     </div>
                 </form>
-            </div>
+            </div> */}
 
             <div>
                 {notes && notes.map((note) => {
