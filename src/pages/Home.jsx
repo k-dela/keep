@@ -18,7 +18,6 @@ export default function Home(){
         //console.log(author);
         const {data, error} = await supabase.from('Note').insert([{title,body,user_id}]);
         const newNote = data[0];
-        console.log(newNote);
         if(error) console.error(error);
         
         const newNotes = [...notes, newNote];
@@ -54,7 +53,12 @@ export default function Home(){
 
             <div>
                 {notes && notes.map((note) => {
-                    return <h2>{note.title}</h2>
+                    return (
+                        <div key={note.id}>
+                            <h2>{note.title}</h2>
+                            <p>{note.body}</p>
+                        </div>
+                    )
                 })}
             </div>
         </div>
