@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/Auth"
 import supabase from "../supabase/supabase";
 
+import Note from "../components/Note";
+
 
 export default function Home(){
     const {user} = useAuth();
@@ -65,12 +67,7 @@ export default function Home(){
 
             <div>
                 {notes && notes.map((note) => {
-                    return (
-                        <div key={note.id}>
-                            <h2>{note.title}</h2>
-                            <p>{note.body}</p>
-                        </div>
-                    )
+                    return <Note key={note.id} note={note} />
                 })}
             </div>
         </div>
