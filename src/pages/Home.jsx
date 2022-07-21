@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../context/Auth"
 import supabase from "../supabase/supabase";
 
@@ -23,6 +23,18 @@ export default function Home(){
         const newNotes = [...notes, newNote];
         setNotes(newNotes);
     }
+
+    useEffect(() => {
+        const fetchNotes = async () => {
+            const {data, error} = await supabase.from('Note').select();
+            
+            if(error) console.error(error);
+
+            setNotes(data);
+        }
+
+        fetchNotes();
+    }, [notes])
 
     return (
         <div>
