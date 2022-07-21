@@ -26,6 +26,15 @@ export default function Home(){
         setNotes(newNotes);
     }
 
+    const deleteNote = async (noteId) => {
+        const {data, error} = await supabase.from('Note').delete().match({id: noteId});
+
+        if(error) console.error(error);
+
+        const newNotes = notes.filter((note) => note.id != noteId);
+        setNotes(newNotes);
+    }
+
     useEffect(() => {
         const fetchNotes = async () => {
             const {data, error} = await supabase.from('Note').select();
@@ -67,7 +76,7 @@ export default function Home(){
 
             <div>
                 {notes && notes.map((note) => {
-                    return <Note key={note.id} note={note} />
+                    return <Note key={note.id} note={note} deleteNote={deleteNote} />
                 })}
             </div>
         </div>
