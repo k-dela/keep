@@ -27,12 +27,12 @@ export default function Home(){
     }
 
     const deleteNote = async (noteId) => {
-        const {data, error} = await supabase.from('Note').delete().match({id: noteId});
-
-        if(error) console.error(error);
-
-        const newNotes = notes.filter((note) => note.id != noteId);
-        setNotes(newNotes);
+        if(window.confirm('You sure about this?')){
+            const {data, error} = await supabase.from('Note').delete().match({id: noteId});
+            if(error) console.error(error);
+            const newNotes = notes.filter((note) => note.id != noteId);
+            setNotes(newNotes);
+        }
     }
 
     useEffect(() => {
