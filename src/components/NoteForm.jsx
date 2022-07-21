@@ -19,7 +19,7 @@ export default function NoteForm({ addNewNote, userId }){
     }
 
     return (
-        <div>
+        <div className="noteform-container">
             <p>Note form</p>
         <form onSubmit={createNoteInDb}>
             <div>

@@ -16,20 +16,6 @@ export default function Home(){
         setNotes(updatedList);
     }
 
-    // const createNote = async (e) => {
-    //     e.preventDefault();
-
-    //     // console.log(title, body);
-    //     // const user_id = user.id;
-    //     // //console.log(author);
-    //     // const {data, error} = await supabase.from('Note').insert([{title,body,user_id}]);
-    //     // const newNote = data[0];
-    //     // if(error) console.error(error);
-        
-    //     // const newNotes = [...notes, newNote];
-    //     // setNotes(newNotes);
-    // }
-
     const deleteNote = async (noteId) => {
         if(window.confirm('You sure about this?')){
             const {data, error} = await supabase.from('Note').delete().match({id: noteId});
@@ -52,34 +38,12 @@ export default function Home(){
     }, [])
 
     return (
-        <div>
+        <div className="root-container">
             <h1>Home</h1>
 
             <NoteForm addNewNote={addNewNote} userId={user.id}/>
-{/* 
-            <div>
-                <form onSubmit={createNote}>
-                    <div>
-                     <label htmlFor="title">Title:</label>
-                     <input type="text"
-                     name="title"
-                     onInput={(e) => setTitle(e.target.value)}/>
-                    </div>
-                    <div>
-                        <label htmlFor="body">Body:</label>
-                        <textarea name="body"
-                        cols="30"
-                        rows="10"
-                        onInput={(e) => setBody(e.target.value)}
-                        ></textarea>
-                    </div>
-                    <div>
-                        <button>Create</button>
-                    </div>
-                </form>
-            </div> */}
 
-            <div>
+            <div className="notes-container">
                 {notes && notes.map((note) => {
                     return <Note key={note.id} note={note} deleteNote={deleteNote} />
                 })}
