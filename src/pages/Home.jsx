@@ -16,8 +16,9 @@ export default function Home(){
         console.log(title, body);
         const user_id = user.id;
         //console.log(author);
-        const {data: newNote, error} = await supabase.from('Note').insert([{title,body,user_id}]);
-
+        const {data, error} = await supabase.from('Note').insert([{title,body,user_id}]);
+        const newNote = data[0];
+        console.log(newNote);
         if(error) console.error(error);
         
         const newNotes = [...notes, newNote];
