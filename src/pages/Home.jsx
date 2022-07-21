@@ -4,6 +4,7 @@ import supabase from "../supabase/supabase";
 
 import Note from "../components/Note";
 import NoteForm from "../components/NoteForm";
+import NoteModal from "../components/NoteModal";
 
 
 export default function Home(){
@@ -48,9 +49,15 @@ export default function Home(){
 
             <div className="notes-container">
                 {notes && notes.map((note) => {
-                    return <Note key={note.id} note={note} deleteNote={deleteNote} handleClick={handleClick} />
+                    return <Note 
+                    key={note.id} 
+                    note={note} 
+                    deleteNote={deleteNote} 
+                    handleClick={handleClick} />
                 })}
             </div>
+
+            <NoteModal />
         </div>
     )
 }
