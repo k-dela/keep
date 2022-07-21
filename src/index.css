@@ -56,6 +56,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.note{
+  border: 1px solid white;
+  margin-bottom: 10px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
