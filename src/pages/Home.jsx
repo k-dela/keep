@@ -11,7 +11,6 @@ export default function Home(){
     const {user} = useAuth();
 
     const [notes, setNotes] = useState([]);
-    const [modalOpen, setModalOpen] = useState(false);
 
     const addNewNote = (newNote) => {
         const updatedList = [...notes, newNote];
@@ -57,9 +56,8 @@ export default function Home(){
                     deleteNote={deleteNote} 
                     handleClick={handleClick} />
                 })}
+                
             </div>
-
-            {modalOpen && <NoteModal />}
         </div>
     )
 }
