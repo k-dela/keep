@@ -19,7 +19,7 @@ export default function NoteForm({ addNewNote, userId }){
     }
 
     return (
-        <div className="noteform-container">
+        <>
             <p>Note form</p>
         <form onSubmit={createNoteInDb}>
             <div>
@@ -40,6 +40,6 @@ export default function NoteForm({ addNewNote, userId }){
                 <button>Create</button>
             </div>
         </form>
-    </div>
+    </>
     )
 }

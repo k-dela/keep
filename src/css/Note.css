@@ -1,0 +1,15 @@
+.note{
+    border: 3px solid black;
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+
+    
+}
+
+.note > p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}

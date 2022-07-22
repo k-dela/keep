@@ -1,3 +1,4 @@
+import '../css/Note.css';
 export default function Note({ note, deleteNote, handleClick }){
     return (
         <div className='note' onClick={(e) =>{

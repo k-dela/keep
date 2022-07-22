@@ -1,0 +1,13 @@
+.notes-container{
+    background-color: brown;
+    border: 3px solid black;
+    margin-top: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.noteForm-container{
+    background-color: coral;
+    border: 3px solid black;
+}

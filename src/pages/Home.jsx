@@ -6,6 +6,8 @@ import Note from "../components/Note";
 import NoteForm from "../components/NoteForm";
 import NoteModal from "../components/NoteModal";
 
+import "../css/Home.css"
+
 export default function Home(){
     const {user} = useAuth();
 
@@ -50,7 +52,9 @@ export default function Home(){
         <div className="root-container">
             <h1>Home</h1>
 
-            <NoteForm addNewNote={addNewNote} userId={user.id}/>
+            <div className='noteForm-container'>
+             <NoteForm addNewNote={addNewNote} userId={user.id}/>
+            </div>
 
             <div className="notes-container">
                 {notes && notes.map((note) => {

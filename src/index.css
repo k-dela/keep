@@ -3,20 +3,3 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-/* body{
-  background-color: turquoise;
-} */
-
-/* .noteform-container{
-  background-color: tomato;
-} */
-
-.notes-container{
-  background-color: violet;
-}
-
-.note{
-  border: 1px solid black;
-  margin: 3px;
-}
