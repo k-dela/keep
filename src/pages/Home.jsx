@@ -38,7 +38,8 @@ export default function Home(){
         fetchNotes();
     }, [])
 
-    const handleClick = () => {
+    const handleClick = (noteId) => {
+        console.log(noteId)
         setModalOpen(true);
         return console.log('You clicked a note')
     }
