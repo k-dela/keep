@@ -6,11 +6,11 @@ import Note from "../components/Note";
 import NoteForm from "../components/NoteForm";
 import NoteModal from "../components/NoteModal";
 
-
 export default function Home(){
     const {user} = useAuth();
 
     const [notes, setNotes] = useState([]);
+    const[modalOpen, setModalOpen] = useState(false);
 
     const addNewNote = (newNote) => {
         const updatedList = [...notes, newNote];
@@ -58,6 +58,7 @@ export default function Home(){
                 })}
                 
             </div>
+            <NoteModal isOpen={modalOpen} />
         </div>
     )
 }
