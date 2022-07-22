@@ -58,7 +58,7 @@ export default function Home(){
                 })}
                 
             </div>
-            <NoteModal isOpen={modalOpen} />
+            <NoteModal isOpen={modalOpen}  close={() => setModalOpen(false)}/>
         </div>
     )
 }
