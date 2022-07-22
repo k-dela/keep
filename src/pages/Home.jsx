@@ -12,6 +12,8 @@ export default function Home(){
     const [notes, setNotes] = useState([]);
     const[modalOpen, setModalOpen] = useState(false);
 
+    const [noteOnModal, setNoteOnModal] = useState(null);
+
     const addNewNote = (newNote) => {
         const updatedList = [...notes, newNote];
         setNotes(updatedList);
@@ -38,8 +40,9 @@ export default function Home(){
         fetchNotes();
     }, [])
 
-    const handleClick = (noteId) => {
-        console.log(noteId)
+    const handleClick = (clickedNote) => {
+        console.log(clickedNote.id)
+        setNoteOnModal(clickedNote);
         setModalOpen(true);
         return console.log('You clicked a note')
     }
@@ -59,7 +62,7 @@ export default function Home(){
                 })}
                 
             </div>
-            <NoteModal isOpen={modalOpen}  close={() => setModalOpen(false)}/>
+            <NoteModal isOpen={modalOpen} note={noteOnModal} close={() => setModalOpen(false)}/>
         </div>
     )
 }
